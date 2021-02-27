@@ -6,7 +6,7 @@ import { Auth } from 'aws-amplify';
 class ForgotPasswordVerification extends Component {
   state = {
     verificationcode: "",
-    email: "",
+    username: "",
     newpassword: "",
     errors: {
       cognito: null,
@@ -38,12 +38,12 @@ class ForgotPasswordVerification extends Component {
     // AWS Cognito integration here
     try {
       await Auth.forgotPasswordSubmit(
-        this.state.email,
+        this.state.username,
         this.state.verificationcode,
         this.state.newpassword
       );
       this.props.history.push("/changepasswordconfirmation");
-    }catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -62,7 +62,7 @@ class ForgotPasswordVerification extends Component {
           <h1>Set new password</h1>
           <p>
             Please enter the verification code sent to your email address below,
-            your email address and a new password.
+            your username and a new password.
           </p>
           <FormErrors formerrors={this.state.errors} />
 
@@ -81,19 +81,16 @@ class ForgotPasswordVerification extends Component {
               </p>
             </div>
             <div className="field">
-              <p className="control has-icons-left">
-                <input 
-                  className="input" 
-                  type="email"
-                  id="email"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                  value={this.state.email}
+              <p className="control has-icons-right">
+                <input
+                  className="input"
+                  type="text"
+                  id="username"
+                  aria-describedby="usernameHelp"
+                  placeholder="Enter username"
+                  value={this.state.username}
                   onChange={this.onInputChange}
                 />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
               </p>
             </div>
             <div className="field">

@@ -19,6 +19,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 library.add(faEdit);
 
 class App extends Component {
+
   state = {
     isAuthenticated: false,
     isAuthenticating: true,
@@ -33,6 +34,22 @@ class App extends Component {
     this.setState({ user: user });
   }
 
+  async componentDidMount() {
+    try {
+      const session = await Auth.currentSession();
+      this.setAuthStatus(true);
+      console.log(session);
+      const user = await Auth.currentAuthenticatedUser();
+      this.setUser(user);
+    } catch(error) {
+      if (error !== 'No current user') {
+        console.log(error);
+      }
+    }
+  
+    this.setState({ isAuthenticating: false });
+  }
+  
   render() {
     const authProps = {
       isAuthenticated: this.state.isAuthenticated,
@@ -41,6 +58,7 @@ class App extends Component {
       setUser: this.setUser
     }
     return (
+      !this.state.isAuthenticating&&
       <div className="App">
         <Router>
           <div>

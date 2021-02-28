@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Product from './Product';
 import axios from "axios";
+import Clinics from './clinics'
 const config = require('../config.json');
 
 export default class Products extends Component {
@@ -13,12 +14,13 @@ export default class Products extends Component {
   fetchProducts = async () => {
     // add call to AWS API Gateway to fetch products here
     // then set them in state
+    console.log(this.props.auth.user.username)
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/products`);
+      const res = await axios.get(`${config.api.invokeUrl}/clinic-owner/clinics?username=${this.props.auth.user.username}`);
       const products = res.data;
       this.setState({ products: products });
     } catch (err) {
-      console.log(`An error has occurred: ${err}`);
+      console.log(`Failed to fetch all clinics: ${err}`);
     }
   }
 
@@ -40,8 +42,9 @@ export default class Products extends Component {
                   <div className="tile is-4 is-parent  is-vertical">
                     { 
                       this.state.products && this.state.products.length > 0
-                      ? this.state.products.map(product => <Product name={product.productname} id={product.id} key={product.id} />)
-                      : <div className="tile notification is-warning">No products available</div>
+                      // ? this.state.products.map(product => <Product name={product.productname} id={product.id} key={product.id} />)
+                      ?<Clinics clinics={this.state.products}></Clinics>
+                      : <div className="tile notification is-warning">No clinics available</div>
                     }
                   </div>
                 </div>

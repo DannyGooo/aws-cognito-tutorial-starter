@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Auth } from 'aws-amplify';
+import Typography from '@material-ui/core/Typography';
 
 export default class Navbar extends Component {
   handleLogOut = async event => {
@@ -17,17 +18,21 @@ export default class Navbar extends Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            <img src="hexal-logo.png" width="112" height="28" alt="hexal logo" />
+            {/* <img src="hexal-logo.png" width="112" height="28" alt="hexal logo" />  */}
+            <Typography style={{fontWeight:"900", fontSize:"20px", color:"#00d1b2" }}>GP Management</Typography>  
           </a>
+          {/* <div style={{display:"inline-block", color: "lightblue", paddingRight:"30px" }}>
+            <Typography style={{fontWeight:"900", fontSize:"20px" }}>GP Management</Typography>         
+          </div> */}
         </div>
 
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
-            <a href="/" className="navbar-item">
+            {/* <a href="/" className="navbar-item">
               Home
-            </a>
-            <a href="/products" className="navbar-item">
-              Products
+            </a> */}
+            <a href="/clinics" className="navbar-item">
+              Clinics
             </a>
             <a href="/admin" className="navbar-item">
               Admin

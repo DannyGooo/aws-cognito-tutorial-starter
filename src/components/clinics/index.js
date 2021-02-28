@@ -27,9 +27,6 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import BlockIcon from '@material-ui/icons/Block';
 import DuoIcon from '@material-ui/icons/Duo';
 
-// import {config} from "../../../config";
-import axios from "axios";
-// import authHeader from "../../../services/auth-header";
 
 const useRowStyles = makeStyles({
     root: {
@@ -89,12 +86,18 @@ function Row(props) {
 
 
                 <TableCell component="th" scope="row" align="center">
-                    {row.patientName}
+                    {row.clinicName}
                 </TableCell>
+                <TableCell align="center">{row.type}</TableCell>
+                <TableCell align="center">{row.email}</TableCell>
+                <TableCell align="center">{row.phone}</TableCell>
+                <TableCell align="center">{row.fax}</TableCell>
+                <TableCell align="center">{row.director}</TableCell>
+                <TableCell align="center">{row.address}</TableCell>
 
 
 
-                <TableCell align="center">{new Date(row.startTime).toLocaleString([], { year: 'numeric', month: 'short', day: 'numeric' })}</TableCell>
+                {/* <TableCell align="center">{new Date(row.startTime).toLocaleString([], { year: 'numeric', month: 'short', day: 'numeric' })}</TableCell>
                 <TableCell align="center">{new Date(row.startTime).toLocaleString([], { hour: '2-digit', minute: '2-digit' })}</TableCell>
                 <TableCell align="center">{new Date(row.endTime).toLocaleString([], { hour: '2-digit', minute: '2-digit' })}</TableCell>
                 {patientData ? (<TableCell align="center">{patientData.phone}</TableCell>):(<TableCell align="center">{}</TableCell>)}
@@ -109,7 +112,7 @@ function Row(props) {
                             copy
                         </Button>
                     </Tooltip>
-                </TableCell>
+                </TableCell> */}
 
                 <TableCell >
 
@@ -137,8 +140,7 @@ function Row(props) {
 
                             >
                                 <DuoIcon className={classes.icon} style={{ color: "#8BED03" }} />
-
-                                Enter room
+                                Enter 
                             </Button>
                         )
                     }
@@ -166,31 +168,27 @@ function Row(props) {
 
 export default function Clinics(props) {
     const classes = useStyles();
-    // const { appointments } = useRoomSeletion();
 
 
 
-    return (
-        <Grid container justify="center">
-            <Grid item >
+    return ( 
                 <Timeline align="left">
-
                     {props.clinics.length > 0 ?
                         (<TableContainer component={Paper}>
                             <Table aria-label="collapsible table">
                                 <TableHead >
                                     <TableRow >
                                         <TableCell />
-                                        <TableCell className={classes.headerRow} align="center">Patient</TableCell>
-                                        <TableCell className={classes.headerRow} align="center">Date</TableCell>
+                                        <TableCell className={classes.headerRow} align="center">Clinic&nbsp;Name</TableCell>
+                                        <TableCell className={classes.headerRow} align="center">Type</TableCell>
 
-                                        <TableCell className={classes.headerRow} align="center">Start&nbsp;Time</TableCell>
-                                        <TableCell className={classes.headerRow} align="center">End&nbsp;Time</TableCell>
-                                        <TableCell className={classes.headerRow} align="center">Phone</TableCell>
                                         <TableCell className={classes.headerRow} align="center">Email</TableCell>
-                                        <TableCell className={classes.headerRow} align="center">Clincian</TableCell>
+                                        <TableCell className={classes.headerRow} align="center">Telephone</TableCell>
+                                        <TableCell className={classes.headerRow} align="center">Fax</TableCell>
+                                        <TableCell className={classes.headerRow} align="center">Director</TableCell>
+                                        <TableCell className={classes.headerRow} align="center">Address</TableCell>
 
-                                        <TableCell className={classes.headerRow} align="center">Patient&nbsp;URL</TableCell>
+                                        {/* <TableCell className={classes.headerRow} align="center">Patient&nbsp;URL</TableCell> */}
                                         <TableCell align="center"> </TableCell>
 
                                     </TableRow>
@@ -207,13 +205,9 @@ export default function Clinics(props) {
                             <Typography variant="h3" style={{ color: "rgba(0, 0, 0, 0.3)", marginTop: "30%" }}>No rooms today</Typography>
                         )}
 
-
-
-
-
                 </Timeline>
-            </Grid>
-        </Grid>
+    
+        // </div>
 
     );
 }

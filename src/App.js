@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import Products from './components/Products';
+import Clinics from './components/ClinicsPage';
 import ProductAdmin from './components/ProductAdmin';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
@@ -63,11 +63,9 @@ class App extends Component {
         <Router>
           <div style={{display:"flex", minHeight:"100vh", flexDirection:"column"}}>
             <Navbar auth={authProps} />
-            <div style={{flex:"1"}}>
+            <div style={{flex:"1",}}>
               <Switch>
                 <Route exact path="/" render={(props) => <Home {...props} auth={authProps} />} />
-                <Route exact path="/products" render={(props) => <Products {...props} auth={authProps} />} />
-                <Route exact path="/admin" render={(props) => <ProductAdmin {...props} auth={authProps} />} />
                 <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} />} />
                 <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} />} />
                 <Route exact path="/forgotpassword" render={(props) => <ForgotPassword {...props} auth={authProps} />} />
@@ -75,6 +73,9 @@ class App extends Component {
                 <Route exact path="/changepassword" render={(props) => <ChangePassword {...props} auth={authProps} />} />
                 <Route exact path="/changepasswordconfirmation" render={(props) => <ChangePasswordConfirm {...props} auth={authProps} />} />
                 <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} />} />
+                <Route exact path="/clinics/createClinic" render={(props) => <Clinics {...props} auth={authProps} />} />
+                <Route exact path="/clinics" render={(props) => <Clinics {...props} auth={authProps} />} />
+                <Route exact path="/admin" render={(props) => <ProductAdmin {...props} auth={authProps} />} />
               </Switch>
             </div>
             <Footer />

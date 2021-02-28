@@ -18,7 +18,6 @@ export default class Navbar extends Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            {/* <img src="hexal-logo.png" width="112" height="28" alt="hexal logo" />  */}
             <Typography style={{fontWeight:"900", fontSize:"20px", color:"#00d1b2" }}>GP Management</Typography>  
           </a>
           {/* <div style={{display:"inline-block", color: "lightblue", paddingRight:"30px" }}>

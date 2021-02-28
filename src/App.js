@@ -13,6 +13,7 @@ import ChangePassword from './components/auth/ChangePassword';
 import ChangePasswordConfirm from './components/auth/ChangePasswordConfirm';
 import Welcome from './components/auth/Welcome';
 import Footer from './components/Footer';
+import CreateClinic from './components/routes/CreateClinic'
 import { Auth } from 'aws-amplify';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -73,7 +74,7 @@ class App extends Component {
                 <Route exact path="/changepassword" render={(props) => <ChangePassword {...props} auth={authProps} />} />
                 <Route exact path="/changepasswordconfirmation" render={(props) => <ChangePasswordConfirm {...props} auth={authProps} />} />
                 <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} />} />
-                <Route exact path="/clinics/createClinic" render={(props) => <Clinics {...props} auth={authProps} />} />
+                <Route exact path="/clinics/createClinic" render={(props) => <CreateClinic {...props} auth={authProps} />} />
                 <Route exact path="/clinics" render={(props) => <Clinics {...props} auth={authProps} />} />
                 <Route exact path="/admin" render={(props) => <ProductAdmin {...props} auth={authProps} />} />
               </Switch>
